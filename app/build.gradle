@@ -43,5 +43,5 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
 
     implementation project(":cleanlist")
-    //implementation 'com.github.pamartineza:CleanListAdapter:master-SNAPSHOT'
+    //implementation 'com.github.pamartineza:CleanListAdapter:a86a0cbdf5'
 }

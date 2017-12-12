@@ -86,7 +86,7 @@ class MainPresenter(val view: IMainView): CleanListPresenter<DemoItem>(view), De
 
 ## About the demo App
 
-The demo apps shows a list that reacts to click, long click, left swipe, drag and "extra" click on the textviews 
+The demo app demonstrates MVP architecture with a list that reacts to click, long click, left swipe, drag and "extra" click on the textviews 
 
 
 ## Gradle Dependency:
