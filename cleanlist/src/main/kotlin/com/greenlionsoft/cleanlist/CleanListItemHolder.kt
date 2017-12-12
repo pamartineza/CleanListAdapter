@@ -7,7 +7,7 @@ import android.widget.ImageView
 /**
  *
  * Class to be extended by custom Holder
- *
+ * <p>
  * It has already implemented optional listeners for click, long click, and drag
  * on a view with id "dragHandleIv"
  *

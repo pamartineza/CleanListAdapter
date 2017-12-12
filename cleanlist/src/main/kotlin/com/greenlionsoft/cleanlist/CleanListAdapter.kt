@@ -22,12 +22,10 @@ import java.lang.reflect.Method
 class CleanListAdapter<ItemClass, HolderClass : CleanListItemHolder<ItemClass>>(
         val listItemLayoutResourceId: Int,
         val entityClass: Class<HolderClass>,
+        val cleanListPresenter: CleanListPresenter<ItemClass>,
         var cleanListTouchCallback: CleanListTouchCallback<ItemClass>? = null,
-        var onItemClick: ((position: Int) -> Unit)? = null,
-        var onItemLongClick: ((position: Int) -> Unit)? = null,
         var diffUtil: CleanListDiffUtil<ItemClass>? = null,
-        var itemTouchHelper: ItemTouchHelper? = null,
-        var extraCallbacks: CleanListItemHolder.ICleanListItemHolderExtraCallbacks? = null)
+        var itemTouchHelper: ItemTouchHelper? = null)
     : RecyclerView.Adapter<HolderClass>(), CleanListPresenter.ICleanListView<ItemClass> {
 
     var itemsList = mutableListOf<ItemClass>()
@@ -70,7 +68,7 @@ class CleanListAdapter<ItemClass, HolderClass : CleanListItemHolder<ItemClass>>(
         constructor = entityClass.getConstructor(View::class.java)
         instance = constructor.newInstance(view)
         method = instance.javaClass.superclass.getMethod("setCallBacks", Function1::class.java, Function1::class.java, Function1::class.java, CleanListItemHolder.ICleanListItemHolderExtraCallbacks::class.java)
-        method.invoke(instance, onItemClick, onItemLongClick, this@CleanListAdapter::onDragHandleLongPressed, extraCallbacks)
+        method.invoke(instance, cleanListPresenter::onItemPressed, cleanListPresenter::onItemPressed, this@CleanListAdapter::onDragHandleLongPressed, cleanListPresenter)
 
         return instance
     }
