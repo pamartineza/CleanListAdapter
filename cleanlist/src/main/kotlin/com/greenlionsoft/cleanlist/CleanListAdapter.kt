@@ -68,7 +68,7 @@ class CleanListAdapter<ItemClass, HolderClass : CleanListItemHolder<ItemClass>>(
         constructor = entityClass.getConstructor(View::class.java)
         instance = constructor.newInstance(view)
         method = instance.javaClass.superclass.getMethod("setCallBacks", Function1::class.java, Function1::class.java, Function1::class.java, CleanListItemHolder.ICleanListItemHolderExtraCallbacks::class.java)
-        method.invoke(instance, cleanListPresenter::onItemPressed, cleanListPresenter::onItemPressed, this@CleanListAdapter::onDragHandleLongPressed, cleanListPresenter)
+        method.invoke(instance, cleanListPresenter::onItemPressed, cleanListPresenter::onItemLongPressed, this@CleanListAdapter::onDragHandleLongPressed, cleanListPresenter)
 
         return instance
     }
