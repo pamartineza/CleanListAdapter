@@ -18,9 +18,9 @@ This repo has been created as reference guide for internal lib usage but it has 
 
 * Define your Model/Entity class that will be listed e.g. DemoItem.kt
 * Define view holder layout e.g. list_item_demo.xml (include a view with id dragHandleIv if drag is required)
-* Define a presenter that extends CleanListPresenter<DemoItem> e.g. MainPresenter
-* Define a view interface that extends ICleanListView<DemoItem> e.g. IMainView
-* Let your Activity/Fragment/View implement presenter interface e.g. MainPresenter.IMainView
+* Define a presenter that extends CleanListPresenter<DemoItem> e.g. DemoPresenter
+* Define a view interface that extends ICleanListView<DemoItem> e.g. IDemoView
+* Let your Activity/Fragment/View implement presenter interface e.g. DemoPresenter.IDemoView
 * Instantiate Presenter
 * Instantiate CleanListPresenterClass and provide in constructor class types and params
 * Optionally but highly recommended provide DiffUtilClass that extends CleanListDiffUtil
@@ -29,7 +29,7 @@ This repo has been created as reference guide for internal lib usage but it has 
 
 **Adapter Set Up:**
 ```kotlin
-val presenter = MainPresenter(this)
+val presenter = DemoPresenter(this)
 val listAdapter = CleanListAdapter<DemoItem, DemoItemHolder>(R.layout.list_item_demo, DemoItemHolder::class.java, presenter).apply {
         diffUtil = DemoListDiffUtil()
         cleanListTouchCallback = CleanListTouchCallback(presenter, true, true, false)
@@ -81,12 +81,12 @@ class DemoItemHolder(itemView: View) : CleanListItemHolder<DemoItem>(itemView)  
 And let your presenter implement it 
 
 ```kotlin
-class MainPresenter(val view: IMainView): CleanListPresenter<DemoItem>(view), DemoItemHolder.IDemoItemHolderExtraCallbacks
+class DemoPresenter(val view: IMainView): CleanListPresenter<DemoItem>(view), DemoItemHolder.IDemoItemHolderExtraCallbacks
 ```
 
 ## About the demo App
 
-The demo app demonstrates MVP architecture with a list that reacts to click, long click, left swipe, drag and "extra" click on the textviews 
+The demo app demonstrates MVP architecture with a list that reacts to click, long click, left swipe, drag and "extra" clicks on the textviews 
 
 
 ## Gradle Dependency:
