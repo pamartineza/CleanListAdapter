@@ -43,6 +43,6 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
 
     implementation project(":cleanlist")
-    implementation project(":cleanlistinterface")
-    //implementation 'com.github.pamartineza:CleanListAdapter:a86a0cbdf5'
+    //implementation "com.github.pamartineza:CleanListAdapter:${artifactVersionName}"
+    implementation "com.github.pamartineza:CleanListInterface:${artifactVersionName}"
 }

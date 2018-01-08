@@ -2,11 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 
-
-
-group = 'com.github.pamartineza'
-version = artifactVersionName
-
 android {
     compileSdkVersion 26
 
@@ -47,5 +42,5 @@ dependencies {
 
     implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
 
-    api project(":cleanlistinterface")
+    implementation 'com.github.pamartineza:CleanListInterface:1.0.4'
 }
