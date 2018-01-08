@@ -3,6 +3,7 @@ package com.greenlionsoft.cleanlist
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import com.greenlionsoft.cleanlist.mvp.ICleanListItemHolderExtraCallbacks
 
 /**
  *
@@ -43,9 +44,6 @@ abstract class CleanListItemHolder<in ItemClass>(itemView: View) : RecyclerView.
         this.extraCallbacks = extraCallbacks
 
     }
-
-    interface ICleanListItemHolderExtraCallbacks
-
 
     abstract fun fillWithData(item: ItemClass)
 

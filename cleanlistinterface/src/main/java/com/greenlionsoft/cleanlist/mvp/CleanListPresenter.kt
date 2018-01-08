@@ -1,7 +1,7 @@
-package com.greenlionsoft.cleanlist
+package com.greenlionsoft.cleanlist.mvp
 
 
-open class CleanListPresenter<T>(val cleanListView: ICleanListView<T>) : CleanListItemHolder.ICleanListItemHolderExtraCallbacks {
+open class CleanListPresenter<T>(val cleanListView: ICleanListView<T>) : ICleanListItemHolderExtraCallbacks {
 
 
     open fun onItemPressed(position: Int) {

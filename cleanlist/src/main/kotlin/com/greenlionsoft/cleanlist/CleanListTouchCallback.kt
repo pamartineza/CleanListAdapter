@@ -2,6 +2,7 @@ package com.greenlionsoft.cleanlist
 
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
+import com.greenlionsoft.cleanlist.mvp.CleanListPresenter
 
 
 class CleanListTouchCallback<T>(val cleanListPresenter: CleanListPresenter<T>,

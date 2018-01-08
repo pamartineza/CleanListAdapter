@@ -2,10 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 
-ext {
-    artifactVersionCode= 2
-    artifactVersionName = '1.0.1'
-}
+
 
 group = 'com.github.pamartineza'
 version = artifactVersionName
@@ -49,4 +46,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
+
+    api project(":cleanlistinterface")
 }

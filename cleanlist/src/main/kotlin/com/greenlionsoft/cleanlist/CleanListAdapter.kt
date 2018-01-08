@@ -6,6 +6,8 @@ import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.greenlionsoft.cleanlist.mvp.CleanListPresenter
+import com.greenlionsoft.cleanlist.mvp.ICleanListItemHolderExtraCallbacks
 import java.lang.reflect.Constructor
 import java.lang.reflect.Method
 
@@ -67,7 +69,7 @@ class CleanListAdapter<ItemClass, HolderClass : CleanListItemHolder<ItemClass>>(
 
         constructor = entityClass.getConstructor(View::class.java)
         instance = constructor.newInstance(view)
-        method = instance.javaClass.superclass.getMethod("setCallBacks", Function1::class.java, Function1::class.java, Function1::class.java, CleanListItemHolder.ICleanListItemHolderExtraCallbacks::class.java)
+        method = instance.javaClass.superclass.getMethod("setCallBacks", Function1::class.java, Function1::class.java, Function1::class.java, ICleanListItemHolderExtraCallbacks::class.java)
         method.invoke(instance, cleanListPresenter::onItemPressed, cleanListPresenter::onItemLongPressed, this@CleanListAdapter::onDragHandleLongPressed, cleanListPresenter)
 
         return instance

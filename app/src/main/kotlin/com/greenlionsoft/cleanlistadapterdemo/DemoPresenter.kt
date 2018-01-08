@@ -1,6 +1,6 @@
 package com.greenlionsoft.cleanlistadapterdemo
 
-import com.greenlionsoft.cleanlist.CleanListPresenter
+import com.greenlionsoft.cleanlist.mvp.CleanListPresenter
 import java.util.*
 
 
