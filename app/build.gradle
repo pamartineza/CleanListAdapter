@@ -44,5 +44,5 @@ dependencies {
 
     implementation project(":cleanlist")
     //implementation "com.github.pamartineza:CleanListAdapter:${artifactVersionName}"
-    implementation "com.github.pamartineza:CleanListInterface:${artifactVersionName}"
+    implementation "com.github.pamartineza:CleanListInterface:1.0.4"
 }

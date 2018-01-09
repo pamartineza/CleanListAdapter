@@ -104,6 +104,7 @@ Add library dependency in your App(android) module:
 ```
 dependencies {
   implementation "com.github.pamartineza:CleanListAdapter:x.y.z"
+  implementation "com.github.pamartineza:CleanListInterface:x.y.z"
 }
 ```
 
