@@ -10,7 +10,7 @@ android {
         targetSdkVersion 26
         versionCode artifactVersionCode
         versionName artifactVersionName
-
+        consumerProguardFiles 'proguard-rules.pro'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
