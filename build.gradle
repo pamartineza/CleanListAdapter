@@ -2,13 +2,13 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.2.10'
+        kotlin_version = '1.2.20'
         anko_version = '0.10.2'
-        supportLibraryVersion = '26.1.0'
+        supportLibraryVersion = '27.0.2'
 
         //For publishing
-        artifactVersionCode= 5
-        artifactVersionName = '1.0.5'
+        artifactVersionCode= 6
+        artifactVersionName = '1.0.6'
     }
     repositories {
         google()
@@ -24,6 +24,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.github.ben-manes.versions' version '0.17.0'
+}
+
 allprojects {
     repositories {
         google()
@@ -34,4 +38,17 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+dependencyUpdates.resolutionStrategy = {
+    componentSelection { rules ->
+        rules.all { ComponentSelection selection ->
+            boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm'].any { qualifier ->
+                selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+            }
+            if (rejected) {
+                selection.reject('Release candidate')
+            }
+        }
+    }
 }
