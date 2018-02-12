@@ -57,5 +57,5 @@ dependencies {
 
     implementation "com.android.support:recyclerview-v7:${supportLibraryVersion}"
 
-    implementation 'com.github.pamartineza:CleanListInterface:1.0.5'
+    implementation "com.github.pamartineza:CleanListInterface:${artifactVersionName}"
 }

@@ -7,8 +7,8 @@ buildscript {
         supportLibraryVersion = '27.0.2'
 
         //For publishing
-        artifactVersionCode= 6
-        artifactVersionName = '1.0.6'
+        artifactVersionCode= 7
+        artifactVersionName = '1.0.7'
     }
     repositories {
         google()
