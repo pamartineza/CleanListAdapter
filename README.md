@@ -21,18 +21,17 @@ This repo has been created as reference guide for internal lib usage but it has 
 * Define a presenter that extends CleanListPresenter<DemoItem> e.g. DemoPresenter
 * Define a view interface that extends ICleanListView<DemoItem> e.g. IDemoView
 * Let your Activity/Fragment/View implement presenter interface e.g. DemoPresenter.IDemoView
+* Define an asyncDiffUtil that extends CleanListAsyncDiffUtil<DemoItem> e.g. DemoAsyncListDiffUtil
 * Instantiate Presenter
 * Instantiate CleanListPresenterClass and provide in constructor class types and params
-* Optionally but highly recommended provide DiffUtilClass that extends CleanListDiffUtil
 * Optionally provide CleanListTouchCallBack if swipes or drags are required()
 
 
 **Adapter Set Up:**
 ```kotlin
 val presenter = DemoPresenter(this)
-val listAdapter = CleanListAdapter<DemoItem, DemoItemHolder>(R.layout.list_item_demo, DemoItemHolder::class.java, presenter).apply {
-        diffUtil = DemoListDiffUtil()
-        cleanListTouchCallback = CleanListTouchCallback(presenter, true, true, false)
+val listAdapter = CleanListAdapter<DemoItem, DemoItemHolder>(R.layout.list_item_demo, DemoItemHolder::class.java, presenter, demoAsyncListDiffUtil()).apply {
+        cleanListTouchCallback = CleanListTouchCallback(presenter, true, true, false) //optional
     }
 ```
 **Updating list:**
