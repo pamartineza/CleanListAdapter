@@ -1,6 +1,8 @@
 package com.greenlionsoft.cleanlist
 
-import android.support.v7.util.DiffUtil
+import android.support.v7.recyclerview.extensions.AsyncDifferConfig
+import android.support.v7.recyclerview.extensions.AsyncListDiffer
+import android.support.v7.util.AdapterListUpdateCallback
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.LayoutInflater
@@ -18,38 +20,27 @@ import java.lang.reflect.Method
  * 0- Define "ItemClass" to be displayed in Recyclerview
  * 1- Create a layout resource for the list items
  * 2- Create a Holder "HolderClass" that extends CleanListItemHolder2<ItemClass>
- * 3- Create CleanListAdapter2 and provide all desired callbacks and itemTouchHelper
+ * 3- Create asyncDiffUtil to handle list updates
+ * 4- Create CleanListAdapter and provide all desired callbacks and itemTouchHelper
  *
  */
 class CleanListAdapter<ItemClass, HolderClass : CleanListItemHolder<ItemClass>>(
-        val listItemLayoutResourceId: Int,
-        val entityClass: Class<HolderClass>,
-        val cleanListPresenter: CleanListPresenter<ItemClass>,
-        var cleanListTouchCallback: CleanListTouchCallback<ItemClass>? = null,
-        var diffUtil: CleanListDiffUtil<ItemClass>? = null,
-        var itemTouchHelper: ItemTouchHelper? = null)
+    val listItemLayoutResourceId: Int,
+    val entityClass: Class<HolderClass>,
+    val cleanListPresenter: CleanListPresenter<ItemClass>,
+    var asyncDiffUtil: CleanListAsyncDiffUtil<ItemClass>,
+    var cleanListTouchCallback: CleanListTouchCallback<ItemClass>? = null,
+    var itemTouchHelper: ItemTouchHelper? = null)
     : RecyclerView.Adapter<HolderClass>(), CleanListPresenter.ICleanListView<ItemClass> {
 
-    var itemsList = mutableListOf<ItemClass>()
-
+    val asyncListDiffer = AsyncListDiffer<ItemClass>(
+        AdapterListUpdateCallback(this),
+        AsyncDifferConfig.Builder<ItemClass>(asyncDiffUtil).build()
+    )
 
     override fun updateCleanList(items: List<ItemClass>) {
 
-        if (diffUtil == null) {
-            itemsList.clear()
-            itemsList.addAll(items)
-            notifyDataSetChanged()
-        } else {
-
-            diffUtil?.setLists(itemsList, items)
-            val diffResult = DiffUtil.calculateDiff(diffUtil)
-
-            itemsList.clear()
-            itemsList.addAll(items)
-
-            diffResult.dispatchUpdatesTo(this)
-        }
-
+        asyncListDiffer.submitList(items.toList())
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -77,10 +68,10 @@ class CleanListAdapter<ItemClass, HolderClass : CleanListItemHolder<ItemClass>>(
 
     override fun onBindViewHolder(holder: HolderClass, position: Int) {
 
-        holder.fillWithData(itemsList[holder.adapterPosition])
+        holder.fillWithData(asyncListDiffer.currentList[holder.adapterPosition])
     }
 
-    override fun getItemCount(): Int = itemsList.size
+    override fun getItemCount(): Int = asyncListDiffer.currentList.size
 
 
     fun onDragHandleLongPressed(viewHolder: RecyclerView.ViewHolder) {
