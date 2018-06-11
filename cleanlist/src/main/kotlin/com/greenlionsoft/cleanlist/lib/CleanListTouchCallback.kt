@@ -1,4 +1,4 @@
-package com.greenlionsoft.cleanlist
+package com.greenlionsoft.cleanlist.lib
 
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper

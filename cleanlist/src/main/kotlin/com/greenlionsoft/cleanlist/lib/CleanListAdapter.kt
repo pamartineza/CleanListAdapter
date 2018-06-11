@@ -1,4 +1,4 @@
-package com.greenlionsoft.cleanlist
+package com.greenlionsoft.cleanlist.lib
 
 import android.support.v7.recyclerview.extensions.AsyncDifferConfig
 import android.support.v7.recyclerview.extensions.AsyncListDiffer
@@ -25,12 +25,12 @@ import java.lang.reflect.Method
  *
  */
 class CleanListAdapter<ItemClass, HolderClass : CleanListItemHolder<ItemClass>>(
-    val listItemLayoutResourceId: Int,
-    val entityClass: Class<HolderClass>,
-    val cleanListPresenter: CleanListPresenter<ItemClass>,
-    var asyncDiffUtil: CleanListAsyncDiffUtil<ItemClass>,
-    var cleanListTouchCallback: CleanListTouchCallback<ItemClass>? = null,
-    var itemTouchHelper: ItemTouchHelper? = null)
+        val listItemLayoutResourceId: Int,
+        val entityClass: Class<HolderClass>,
+        val cleanListPresenter: CleanListPresenter<ItemClass>,
+        var asyncDiffUtil: CleanListAsyncDiffUtil<ItemClass>,
+        var cleanListTouchCallback: CleanListTouchCallback<ItemClass>? = null,
+        var itemTouchHelper: ItemTouchHelper? = null)
     : RecyclerView.Adapter<HolderClass>(), CleanListPresenter.ICleanListView<ItemClass> {
 
     val asyncListDiffer = AsyncListDiffer<ItemClass>(

@@ -1,6 +1,6 @@
 package com.greenlionsoft.cleanlistadapterdemo
 
-import com.greenlionsoft.cleanlist.CleanListAsyncDiffUtil
+import com.greenlionsoft.cleanlist.lib.CleanListAsyncDiffUtil
 
 
 class DemoAsyncListDiffUtil : CleanListAsyncDiffUtil<DemoItem>() {

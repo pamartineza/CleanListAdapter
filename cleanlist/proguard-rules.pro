@@ -20,8 +20,8 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep public class * extends com.greenlionsoft.cleanlist.CleanListItemHolder
--keepclassmembers class * extends com.greenlionsoft.cleanlist.CleanListItemHolder{
+-keep public class * extends com.greenlionsoft.cleanlist.lib.CleanListItemHolder
+-keepclassmembers class * extends com.greenlionsoft.cleanlist.lib.CleanListItemHolder{
     public <init>(android.view.View);
     public <methods>;
 }

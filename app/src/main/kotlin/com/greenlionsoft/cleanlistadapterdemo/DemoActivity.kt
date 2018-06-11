@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
-import com.greenlionsoft.cleanlist.CleanListAdapter
-import com.greenlionsoft.cleanlist.CleanListTouchCallback
+import com.greenlionsoft.cleanlist.lib.CleanListAdapter
+import com.greenlionsoft.cleanlist.lib.CleanListTouchCallback
 import kotlinx.android.synthetic.main.activity_main.*
 
 class DemoActivity : AppCompatActivity(), DemoPresenter.IDemoView {
@@ -15,10 +15,10 @@ class DemoActivity : AppCompatActivity(), DemoPresenter.IDemoView {
     var isFirstOnResume = true
 
     val listAdapter = CleanListAdapter<DemoItem, DemoItemHolder>(
-        R.layout.list_item_demo,
-        DemoItemHolder::class.java,
-        presenter,
-        DemoAsyncListDiffUtil()
+            R.layout.list_item_demo,
+            DemoItemHolder::class.java,
+            presenter,
+            DemoAsyncListDiffUtil()
     ).apply {
         cleanListTouchCallback = CleanListTouchCallback(presenter, true, true, false)
     }

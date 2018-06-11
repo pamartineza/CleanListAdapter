@@ -1,7 +1,7 @@
 package com.greenlionsoft.cleanlistadapterdemo
 
 import android.view.View
-import com.greenlionsoft.cleanlist.CleanListItemHolder
+import com.greenlionsoft.cleanlist.lib.CleanListItemHolder
 import com.greenlionsoft.cleanlist.mvp.ICleanListItemHolderExtraCallbacks
 import kotlinx.android.synthetic.main.list_item_demo.view.*
 
