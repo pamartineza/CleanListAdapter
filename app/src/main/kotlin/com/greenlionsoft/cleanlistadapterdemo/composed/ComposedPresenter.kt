@@ -1,22 +1,17 @@
-package com.greenlionsoft.cleanlistadapterdemo
+package com.greenlionsoft.cleanlistadapterdemo.composed
 
 import com.greenlionsoft.cleanlist.mvp.CleanListPresenter
+import com.greenlionsoft.cleanlist.mvp.ComposedCleanListPresenter
+import com.greenlionsoft.cleanlist.mvp.IComposedCleanListPresenter
+import com.greenlionsoft.cleanlistadapterdemo.DemoItem
+import com.greenlionsoft.cleanlistadapterdemo.DemoItemHolder
 import java.util.*
 
 
-class DemoPresenter(val view: IDemoView): CleanListPresenter<DemoItem>(view), DemoItemHolder.IDemoItemHolderExtraCallbacks {
+class ComposedPresenter(val view : IComposedPresenterView ) : IComposedCleanListPresenter by ComposedCleanListPresenter(view), DemoItemHolder.IDemoItemHolderExtraCallbacks {
 
     val itemList: MutableList<DemoItem> = mutableListOf()
 
-    /**
-     * Example of use:
-     *
-     * 1 - Show progress
-     * 2 - Get data from repository (any async solution should be used)
-     * 3 - Update Clean list
-     * 4 - Hide progress
-     *
-     */
     fun onViewReady() {
 
         view.showProgress()
@@ -55,7 +50,7 @@ class DemoPresenter(val view: IDemoView): CleanListPresenter<DemoItem>(view), De
         view.showAgePressedMessage(position)
     }
 
-    interface IDemoView : ICleanListView<DemoItem> {
+    interface IComposedPresenterView : CleanListPresenter.ICleanListView<DemoItem> {
 
         fun showProgress()
 
@@ -68,7 +63,6 @@ class DemoPresenter(val view: IDemoView): CleanListPresenter<DemoItem>(view), De
         fun showNamePressedMessage(position: Int)
 
         fun showAgePressedMessage(position: Int)
-
     }
 
     private fun fakeItemRepository(): List<DemoItem> {
@@ -79,6 +73,4 @@ class DemoPresenter(val view: IDemoView): CleanListPresenter<DemoItem>(view), De
                 DemoItem("Pablo A. Iturbe", 26),
                 DemoItem("Aída Farrer", 45))
     }
-
-
 }

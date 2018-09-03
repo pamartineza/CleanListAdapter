@@ -9,13 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DemoActivity">
+
+
+
+
+
+        <activity android:name="com.greenlionsoft.SelectorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".extended.DemoActivity"/>
+        <activity android:name=".composed.ComposedPresenterActivity"/>
+
+
     </application>
 
 </manifest>
