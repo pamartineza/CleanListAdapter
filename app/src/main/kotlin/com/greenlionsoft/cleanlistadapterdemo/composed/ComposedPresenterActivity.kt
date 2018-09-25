@@ -1,8 +1,8 @@
 package com.greenlionsoft.cleanlistadapterdemo.composed
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.Toast
 import com.greenlionsoft.cleanlist.lib.ComposedCleanListAdapter
 import com.greenlionsoft.cleanlist.lib.ComposedCleanListTouchCallback

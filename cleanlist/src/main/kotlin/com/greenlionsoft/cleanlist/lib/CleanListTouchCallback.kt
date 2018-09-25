@@ -1,7 +1,7 @@
 package com.greenlionsoft.cleanlist.lib
 
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.greenlionsoft.cleanlist.mvp.CleanListPresenter
 
 
@@ -11,7 +11,7 @@ class CleanListTouchCallback<T>(val cleanListPresenter: CleanListPresenter<T>,
                                 val isRightSwipeEnabled: Boolean) : ItemTouchHelper.Callback() {
 
 
-    override fun getMovementFlags(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder?): Int {
+    override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
 
         var dragFlags = 0
         var swipeFlags = 0

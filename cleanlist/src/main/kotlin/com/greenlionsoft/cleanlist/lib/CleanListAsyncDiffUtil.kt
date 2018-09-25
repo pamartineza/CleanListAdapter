@@ -1,6 +1,6 @@
 package com.greenlionsoft.cleanlist.lib
 
-import android.support.v7.util.DiffUtil
+import androidx.recyclerview.widget.DiffUtil
 
 
 abstract class CleanListAsyncDiffUtil<ItemClass> : DiffUtil.ItemCallback<ItemClass>() {

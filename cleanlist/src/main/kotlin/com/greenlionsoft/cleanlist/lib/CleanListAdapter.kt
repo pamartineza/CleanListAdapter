@@ -1,10 +1,10 @@
 package com.greenlionsoft.cleanlist.lib
 
-import android.support.v7.recyclerview.extensions.AsyncDifferConfig
-import android.support.v7.recyclerview.extensions.AsyncListDiffer
-import android.support.v7.util.AdapterListUpdateCallback
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.helper.ItemTouchHelper
+import androidx.recyclerview.widget.AsyncDifferConfig
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.AdapterListUpdateCallback
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,8 +45,8 @@ class CleanListAdapter<ItemClass, HolderClass : CleanListItemHolder<ItemClass>>(
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
 
-        if (cleanListTouchCallback != null) {
-            itemTouchHelper = ItemTouchHelper(cleanListTouchCallback)
+        cleanListTouchCallback?.let {
+            itemTouchHelper = ItemTouchHelper(it)
             itemTouchHelper?.attachToRecyclerView(recyclerView)
         }
     }

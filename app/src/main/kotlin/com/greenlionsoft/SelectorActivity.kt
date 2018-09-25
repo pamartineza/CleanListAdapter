@@ -2,7 +2,7 @@ package com.greenlionsoft
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.greenlionsoft.cleanlistadapterdemo.composed.ComposedPresenterActivity
 import com.greenlionsoft.cleanlistadapterdemo.extended.DemoActivity
 import com.greenlionsoft.cleanlistadapterdemo.R
